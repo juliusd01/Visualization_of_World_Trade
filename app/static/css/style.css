@@ -1,0 +1,301 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.controls {
+    margin: 20px 0;
+    text-align: center;
+}
+
+select {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 300px;
+    max-width: 100%;
+    background-color: white;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 30px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+select option {
+    padding: 8px;
+    font-size: 16px;
+}
+
+#map-container, #products-map-container {
+    flex: 0 0 700px;
+    height: 600px;
+    margin: 20px 0;
+    position: relative;
+}
+
+#map, #products-map {
+    width: 100%;
+    height: 100%;
+}
+
+#trade-info {
+    flex: 1;  /* Take remaining space */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;  /* Make exports and imports side by side */
+    gap: 20px;  /* Space between exports and imports */
+}
+
+#exports, #imports {
+    flex: 1;  /* Equal width for both */
+    min-width: 250px;  /* Minimum width to ensure readability */
+}
+
+#exports h3, #imports h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+#exports h3 {
+    color: #2ecc71;  /* Green for exports */
+}
+
+#imports h3 {
+    color: #e74c3c;  /* Red for imports */
+}
+
+.trade-item {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.trade-item:hover {
+    transform: translateX(5px);
+}
+
+.country-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.trade-value {
+    color: #34495e;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+.product-info {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.product-name {
+    font-style: italic;
+}
+
+.product-code {
+    color: #999;
+    margin-left: 5px;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Views */
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Products View */
+#products-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+#export-products, #import-products {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+#export-products h3, #import-products h3 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#export-products h3 {
+    color: #2ecc71;
+}
+
+#import-products h3 {
+    color: #e74c3c;
+}
+
+.products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.product-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-info {
+    padding: 0.5rem;
+}
+
+.product-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.trade-value {
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.country {
+    stroke: #fff;
+    stroke-width: 0.5px;
+    transition: fill 0.3s;
+    cursor: pointer;
+}
+
+.country:hover {
+    stroke-width: 1px;
+    opacity: 0.8;
+}
+
+.trade-flow {
+    stroke-opacity: 0.6;
+    transition: stroke-opacity 0.3s;
+}
+
+.trade-flow.export {
+    stroke: #4CAF50;
+}
+
+.trade-flow.import {
+    stroke: #F44336;
+}
+
+.trade-flow:hover {
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+
+.globe-background {
+    fill: #e6f3ff;
+    stroke: #999;
+}
+
+.trade-section {
+    margin-bottom: 2rem;
+}
+
+.trade-section h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.product-code {
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+#trade-info {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 1rem;
+} 

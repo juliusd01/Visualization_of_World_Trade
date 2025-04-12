@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Trade Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v4.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>World Trade Visualization</h1>
+        
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <button class="nav-button active" data-view="partners">Trade Partners</button>
+            <button class="nav-button" data-view="products">Trade Products</button>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <select id="country-select">
+                <option value="">Select a country</option>
+            </select>
+        </div>
+
+        <!-- Trade Partners View -->
+        <div id="partners-view" class="view active">
+            <div class="flex-container">
+                <div id="map-container">
+                    <svg id="map"></svg>
+                </div>
+                <div id="trade-info">
+                    <div id="exports"></div>
+                    <div id="imports"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade Products View -->
+        <div id="products-view" class="view">
+            <div class="flex-container">
+                <div id="products-map-container">
+                    <svg id="products-map"></svg>
+                </div>
+                <div id="products-container">
+                    <div id="export-products"></div>
+                    <div id="import-products"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+</body>
+</html> 
